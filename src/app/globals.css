@@ -1,26 +1,570 @@
 @import "tailwindcss";
+/* Import Devanagari font */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap');
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Custom font class for Devanagari */
+.font-devanagari {
+  font-family: 'Noto Sans Devanagari', sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f97316;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ea580c;
+}
+
+/* Smooth transitions */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Sacred symbol background */
+.sacred-bg {
+  background-image: radial-gradient(circle at center, rgba(249, 115, 22, 0.1) 0%, transparent 70%);
+}
+
+/* Verse highlight */
+.verse-highlight {
+  background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+  border-left: 4px solid #f97316;
+}
+
+/* Important verse styling */
+.important-verse {
+  background: linear-gradient(135deg, #ffedd5 0%, #fed7aa 100%);
+  border: 2px solid #f97316;
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);
+}
+
+/* Sanskrit text styling */
+.sanskrit-text {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  line-height: 1.8;
+  letter-spacing: 0.5px;
+}
+
+/* Chapter navigation hover effects */
+.chapter-nav:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(249, 115, 22, 0.15);
+}
+
+/* Search results styling */
+.search-result {
+  border-left: 4px solid #f97316;
+  transition: all 0.3s ease;
+}
+
+.search-result:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Text shadow utilities */
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.text-shadow-lg {
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.text-shadow-xl {
+  text-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+}
+
+/* Mobile-first responsive text sizing */
+@media (max-width: 640px) {
+  .sanskrit-text {
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+  
+  .mobile-text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .mobile-text-base {
+    font-size: 1rem;
+  }
+  
+  .mobile-text-lg {
+    font-size: 1.125rem;
+  }
+  
+  .mobile-text-xl {
+    font-size: 1.25rem;
+  }
+  
+  .mobile-text-2xl {
+    font-size: 1.5rem;
+  }
+  
+  .mobile-text-3xl {
+    font-size: 1.875rem;
+  }
+  
+  .mobile-text-4xl {
+    font-size: 2.25rem;
+  }
+  
+  .mobile-text-5xl {
+    font-size: 3rem;
+  }
+  
+  .mobile-text-6xl {
+    font-size: 3.75rem;
+  }
+}
+
+/* Tablet responsive text */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .tablet-text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .tablet-text-base {
+    font-size: 1rem;
+  }
+  
+  .tablet-text-lg {
+    font-size: 1.125rem;
+  }
+  
+  .tablet-text-xl {
+    font-size: 1.25rem;
+  }
+  
+  .tablet-text-2xl {
+    font-size: 1.5rem;
+  }
+  
+  .tablet-text-3xl {
+    font-size: 1.875rem;
+  }
+  
+  .tablet-text-4xl {
+    font-size: 2.25rem;
+  }
+  
+  .tablet-text-5xl {
+    font-size: 3rem;
+  }
+}
+
+/* Loading animation */
+.loading-dots {
+  display: inline-block;
+}
+
+.loading-dots::after {
+  content: '';
+  animation: dots 1.5s steps(5, end) infinite;
+}
+
+@keyframes dots {
+  0%, 20% {
+    content: '';
+  }
+  40% {
+    content: '.';
+  }
+  60% {
+    content: '..';
+  }
+  80%, 100% {
+    content: '...';
+  }
+}
+
+/* Sacred color palette */
+:root {
+  --sacred-orange: #f97316;
+  --sacred-red: #dc2626;
+  --sacred-yellow: #fbbf24;
+  --sacred-gold: #d97706;
+  --sacred-cream: #fef3c7;
+}
+
+/* Custom button styles */
+.btn-sacred {
+  background: linear-gradient(135deg, var(--sacred-orange) 0%, var(--sacred-red) 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+}
+
+.btn-sacred:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+}
+
+/* Card hover effects */
+.card-sacred {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(249, 115, 22, 0.1);
+}
+
+.card-sacred:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(249, 115, 22, 0.15);
+  border-color: rgba(249, 115, 22, 0.3);
+}
+
+/* Modern form styles */
+.modern-input {
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.modern-input:focus {
+  outline: none;
+  border-color: #f97316;
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.1);
+}
+
+/* Modern card styles */
+.modern-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f3f4f6;
+  transition: all 0.3s ease;
+}
+
+.modern-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #f97316 0%, #dc2626 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Improved focus states */
+.focus-ring:focus {
+  outline: none;
+  ring: 4px;
+  ring-color: rgba(249, 115, 22, 0.3);
+}
+
+/* Mobile-first responsive utilities */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .mobile-px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .mobile-px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  .mobile-py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  .mobile-py-12 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  .mobile-py-16 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  
+  .mobile-py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  
+  .mobile-gap-4 {
+    gap: 1rem;
+  }
+  
+  .mobile-gap-6 {
+    gap: 1.5rem;
+  }
+  
+  .mobile-gap-8 {
+    gap: 2rem;
+  }
+  
+  .mobile-space-y-4 > * + * {
+    margin-top: 1rem;
+  }
+  
+  .mobile-space-y-6 > * + * {
+    margin-top: 1.5rem;
+  }
+  
+  .mobile-space-y-8 > * + * {
+    margin-top: 2rem;
+  }
+  
+  .mobile-grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  
+  .mobile-grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .mobile-flex-col {
+    flex-direction: column;
+  }
+  
+  .mobile-flex-row {
+    flex-direction: row;
+  }
+  
+  .mobile-justify-center {
+    justify-content: center;
+  }
+  
+  .mobile-justify-between {
+    justify-content: space-between;
+  }
+  
+  .mobile-items-center {
+    align-items: center;
+  }
+  
+  .mobile-text-center {
+    text-align: center;
+  }
+  
+  .mobile-text-left {
+    text-align: left;
+  }
+  
+  .mobile-w-full {
+    width: 100%;
+  }
+  
+  .mobile-w-auto {
+    width: auto;
+  }
+  
+  .mobile-h-auto {
+    height: auto;
+  }
+  
+  .mobile-min-h-screen {
+    min-height: 100vh;
+  }
+  
+  .mobile-rounded-lg {
+    border-radius: 0.5rem;
+  }
+  
+  .mobile-rounded-xl {
+    border-radius: 0.75rem;
+  }
+  
+  .mobile-rounded-2xl {
+    border-radius: 1rem;
+  }
+  
+  .mobile-shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .mobile-shadow-xl {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+}
+
+/* Tablet responsive utilities */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .tablet-px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  .tablet-px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  .tablet-py-12 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  .tablet-py-16 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  
+  .tablet-py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  
+  .tablet-grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .tablet-grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+  .tablet-flex-row {
+    flex-direction: row;
+  }
+  
+  .tablet-justify-between {
+    justify-content: space-between;
+  }
+  
+  .tablet-text-left {
+    text-align: left;
+  }
+  
+  .tablet-w-auto {
+    width: auto;
+  }
+}
+
+/* Improved accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .modern-card {
+    border: 2px solid #000;
+  }
+  
+  .btn-sacred {
+    border: 2px solid #000;
+  }
+}
+
+/* Touch-friendly mobile interactions */
+@media (max-width: 640px) {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .mobile-touch-friendly {
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+  
+  .mobile-button-spacing {
+    margin-bottom: 12px;
+  }
+  
+  .mobile-card-padding {
+    padding: 16px;
+  }
+  
+  .mobile-section-spacing {
+    padding: 24px 16px;
+  }
+}
+
+/* Landscape mobile optimizations */
+@media (max-width: 640px) and (orientation: landscape) {
+  .mobile-landscape-py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  .mobile-landscape-py-12 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  .mobile-landscape-text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .mobile-landscape-text-base {
+    font-size: 1rem;
+  }
+}
+
+/* Safe area for notched devices */
+@supports (padding: max(0px)) {
+  .safe-area-top {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+  
+  .safe-area-left {
+    padding-left: max(1rem, env(safe-area-inset-left));
+  }
+  
+  .safe-area-right {
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
 }

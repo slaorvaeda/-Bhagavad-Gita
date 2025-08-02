@@ -6,6 +6,8 @@ import Image from 'next/image';
 import MahabharataAnimation from './components/MahabharataAnimation';
 import FluteShowcase from './components/FluteShowcase';
 
+
+
 export default function Home() {
   const [currentTime, setCurrentTime] = useState(null);
   const [isClient, setIsClient] = useState(false);

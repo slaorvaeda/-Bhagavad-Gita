@@ -1,0 +1,27 @@
+{
+  "name": "Bhagavad Gita Digital",
+  "short_name": "Bhagavad Gita",
+  "description": "Read the complete Bhagavad Gita online with Sanskrit text, English translation, and detailed word meanings.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fef3c7",
+  "theme_color": "#ea580c",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["education", "religion", "books"],
+  "lang": "en",
+  "dir": "ltr"
+} 

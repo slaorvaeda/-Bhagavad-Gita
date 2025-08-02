@@ -12,7 +12,7 @@ export default function VerseDisplay({ chapter, selectedVerse, onVerseSelect }) 
   return (
     <div className="space-y-6">
       {/* Chapter Header */}
-      <div className="bg-white rounded-lg shadow-lg p-6">
+      {/* <div className="bg-white rounded-lg shadow-lg p-6">
         <div className="text-center mb-4">
           <h1 className="text-3xl font-bold text-gray-800 mb-2">
             Chapter {chapter.chapterId}: {chapter.name}
@@ -21,10 +21,10 @@ export default function VerseDisplay({ chapter, selectedVerse, onVerseSelect }) 
           <p className="text-lg font-devanagari text-orange-600">{chapter.sanskrit}</p>
         </div>
         <p className="text-gray-700 leading-relaxed">{chapter.summary}</p>
-      </div>
+      </div> */}
 
       {/* Verse Navigation */}
-      <div className="bg-white rounded-lg shadow-lg p-4">
+      {/* <div className="bg-white rounded-lg shadow-lg p-4">
         <h3 className="text-lg font-semibold text-gray-800 mb-3">Verses</h3>
         <div className="grid grid-cols-6 md:grid-cols-10 gap-2">
           {chapter.verses.map((verse) => {
@@ -51,7 +51,7 @@ export default function VerseDisplay({ chapter, selectedVerse, onVerseSelect }) 
             );
           })}
         </div>
-      </div>
+      </div> */}
 
       {/* Current Verse */}
       {currentVerse && (

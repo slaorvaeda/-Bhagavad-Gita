@@ -25,14 +25,16 @@ export const chapter1_part2 = {
       sanskrit: "अथ व्यवस्थितान्दृष्ट्वा धार्तराष्ट्रान्कपिध्वजः | प्रवृत्ते शस्त्रसम्पाते धनुरुद्यम्य पाण्डवः || हृषीकेशं तदा वाक्यमिदमाह महीपते ||",
       transliteration: "atha vyavasthitān dṛṣṭvā dhārtarāṣṭrān kapi-dhvajaḥ pravṛtte śastra-sampāte dhanur udyamya pāṇḍavaḥ hṛṣīkeśaṁ tadā vākyam idam āha mahī-pate",
       translation: "O King, at that time Arjuna, the son of Pandu, who was seated in his chariot, his flag marked with Hanuman, took up his bow and prepared to shoot his arrows, looking at the sons of Dhritarashtra. O King, Arjuna then spoke to Hrsikesa (Krsna) these words:",
-      wordMeaning: "atha = thereupon; vyavasthitān = situated; dṛṣṭvā = looking at; dhārtarāṣṭrān = the sons of Dhritarashtra; kapi-dhvajaḥ = one whose flag is marked with Hanuman; pravṛtte = while about to engage; śastra-sampāte = in releasing his arrows; dhanuḥ = bow; udyamya = taking up; pāṇḍavaḥ = Arjuna; hṛṣīkeśam = unto Lord Krsna; tadā = at that time; vākyam = words; idam = these; āha = said; mahī-pate = O King"
+      wordMeaning: "atha = thereupon; vyavasthitān = situated; dṛṣṭvā = looking at; dhārtarāṣṭrān = the sons of Dhritarashtra; kapi-dhvajaḥ = one whose flag is marked with Hanuman; pravṛtte = while about to engage; śastra-sampāte = in releasing his arrows; dhanuḥ = bow; udyamya = taking up; pāṇḍavaḥ = Arjuna; hṛṣīkeśam = unto Lord Krsna; tadā = at that time; vākyam = words; idam = these; āha = said; mahī-pate = O King",
+      important: true
     },
     {
       number: "1.21",
       sanskrit: "अर्जुन उवाच | सेनयोरुभयोर्मध्ये रथं स्थापय मेऽच्युत || यावदेतान्निरीक्षेऽहं योद्धुकामानवस्थितान् | कैर्मया सह योद्धव्यमस्मिन्रणसमुद्यमे ||",
       transliteration: "arjuna uvāca senayor ubhayor madhye rathaṁ sthāpaya me 'cyuta || yāvad etān nirīkṣe 'haṁ yoddhu-kāmān avasthitān kair mayā saha yoddhavyam asmin raṇa-samudyame ||",
       translation: "Arjuna said: O infallible one, please draw my chariot between the two armies so that I may see those present here, who desire to fight, and with whom I must contend in this great trial of arms.",
-      wordMeaning: "arjunaḥ = Arjuna; uvāca = said; senayoḥ = of the armies; ubhayoḥ = of both parties; madhye = in the middle; ratham = the chariot; sthāpaya = please keep; me = my; acyuta = O infallible Krsna; yāvat = as long as; etān = all these; nirīkṣe = may look; aham = I; yoddhu-kāmān = those who are desiring to fight; avasthitān = arrayed on the battlefield; kaiḥ = with whom; mayā = by me; saha = with; yoddhavyam = to fight with; asmin = in this; raṇa-samudyame = in the attempt of battle"
+      wordMeaning: "arjunaḥ = Arjuna; uvāca = said; senayoḥ = of the armies; ubhayoḥ = of both parties; madhye = in the middle; ratham = the chariot; sthāpaya = please keep; me = my; acyuta = O infallible Krsna; yāvat = as long as; etān = all these; nirīkṣe = may look; aham = I; yoddhu-kāmān = those who are desiring to fight; avasthitān = arrayed on the battlefield; kaiḥ = with whom; mayā = by me; saha = with; yoddhavyam = to fight with; asmin = in this; raṇa-samudyame = in the attempt of battle",
+      important: true
     },
     {
       number: "1.23",
@@ -60,21 +62,24 @@ export const chapter1_part2 = {
       sanskrit: "तत्रापश्यत्स्थितान्पार्थः पितृनथ पितामहान् | आचार्यान्मातुलान्भ्रातृन्पुत्रान्पौत्रान्सखींस्तथा ||",
       transliteration: "tatrāpaśyat sthitān pārthaḥ pitṝn atha pitāmahān ācāryān mātulān bhrātṝn putrān pautrān sakhīṁs tathā",
       translation: "There Arjuna could see, within the midst of the armies of both parties, his fathers, grandfathers, teachers, maternal uncles, brothers, sons, grandsons, and friends.",
-      wordMeaning: "tatra = there; apaśyat = could see; sthitān = standing; pārthaḥ = Arjuna; pitṝn = fathers; atha = also; pitāmahān = grandfathers; ācāryān = teachers; mātulān = maternal uncles; bhrātṝn = brothers; putrān = sons; pautrān = grandsons; sakhīn = friends; tathā = also"
+      wordMeaning: "tatra = there; apaśyat = could see; sthitān = standing; pārthaḥ = Arjuna; pitṝn = fathers; atha = also; pitāmahān = grandfathers; ācāryān = teachers; mātulān = maternal uncles; bhrātṝn = brothers; putrān = sons; pautrān = grandsons; sakhīn = friends; tathā = also",
+      important: true
     },
     {
       number: "1.27",
       sanskrit: "श्वशुरान्सुहृदश्चैव सेनयोरुभयोरपि | तान्समीक्ष्य स कौन्तेयः सर्वान्बन्धूनवस्थितान् ||",
       transliteration: "śvaśurān suhṛdaś caiva senayor ubhayor api tān samīkṣya sa kaunteyaḥ sarvān bandhūn avasthitān",
       translation: "When the son of Kunti, Arjuna, saw all these different grades of friends and relatives, he became overwhelmed with compassion and spoke thus.",
-      wordMeaning: "śvaśurān = fathers-in-law; suhṛdaḥ = well-wishers; ca = also; eva = certainly; senayoḥ = of the armies; ubhayoḥ = of both parties; api = including; tān = all of them; samīkṣya = after seeing; saḥ = he; kaunteyaḥ = the son of Kunti; sarvān = all kinds of; bandhūn = relatives; avasthitān = situated"
+      wordMeaning: "śvaśurān = fathers-in-law; suhṛdaḥ = well-wishers; ca = also; eva = certainly; senayoḥ = of the armies; ubhayoḥ = of both parties; api = including; tān = all of them; samīkṣya = after seeing; saḥ = he; kaunteyaḥ = the son of Kunti; sarvān = all kinds of; bandhūn = relatives; avasthitān = situated",
+      important: true
     },
     {
       number: "1.28",
       sanskrit: "कृपया परयाविष्टो विषीदन्निदमब्रवीत् | अर्जुन उवाच | दृष्ट्वेमं स्वजनं कृष्ण युयुत्सुं समुपस्थितम् ||",
       transliteration: "kṛpayā parayāviṣṭo viṣīdann idam abravīt arjuna uvāca dṛṣṭvemaṁ sva-janaṁ kṛṣṇa yuyutsuṁ samupasthitam",
       translation: "Arjuna said: My dear Krsna, seeing my friends and relatives present before me in such a fighting spirit, I feel the limbs of my body quivering and my mouth drying up.",
-      wordMeaning: "kṛpayā = by compassion; parayā = of a high grade; āviṣṭaḥ = overwhelmed; viṣīdan = while lamenting; idam = this; abravīt = said; arjunaḥ = Arjuna; uvāca = said; dṛṣṭvā = after seeing; imam = all these; sva-janam = kinsmen; kṛṣṇa = O Krsna; yuyutsum = all in a fighting spirit; samupasthitam = present"
+      wordMeaning: "kṛpayā = by compassion; parayā = of a high grade; āviṣṭaḥ = overwhelmed; viṣīdan = while lamenting; idam = this; abravīt = said; arjunaḥ = Arjuna; uvāca = said; dṛṣṭvā = after seeing; imam = all these; sva-janam = kinsmen; kṛṣṇa = O Krsna; yuyutsum = all in a fighting spirit; samupasthitam = present",
+      important: true
     },
     {
       number: "1.29",

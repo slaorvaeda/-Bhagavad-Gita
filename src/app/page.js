@@ -55,6 +55,17 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50">
       {/* Hero Section */}
       <section className="relative overflow-hidden py-16 sm:py-20 lg:py-24">
+        {/* Background Om Logo */}
+        <div className="absolute top-1/2 transform -translate-y-1/2 opacity-10 pointer-events-none">
+          <Image
+            src="/om-logo.svg"
+            alt="Sacred Om Symbol Background"
+            width={400}
+            height={400}
+            className="w-full h-full "
+          />
+        </div>
+        
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Text Content */}

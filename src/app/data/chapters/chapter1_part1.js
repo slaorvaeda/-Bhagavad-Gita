@@ -12,7 +12,7 @@ export const chapter1_part1 = {
       transliteration: "dhṛtarāṣṭra uvāca dharma-kṣetre kuru-kṣetre samavetā yuyutsavaḥ māmakāḥ pāṇḍavāś caiva kim akurvata sañjaya",
       translation: "Dhritarashtra said: O Sanjaya, what did my sons and the sons of Pandu do when they had assembled together, eager for battle on the holy plain of Kurukshetra?",
       wordMeaning: "dhṛtarāṣṭraḥ = Dhritarashtra; uvāca = said; dharma-kṣetre = in the place of pilgrimage; kuru-kṣetre = in the place named Kurukshetra; samavetāḥ = assembled; yuyutsavaḥ = desiring to fight; māmakāḥ = my party (my sons); pāṇḍavāḥ = the sons of Pandu; ca = and; eva = certainly; kim = what; akurvata = did they do; sañjaya = O Sanjaya",
-      important: false
+      important: true
     },
     {
       number: "1.2",
@@ -90,7 +90,8 @@ export const chapter1_part1 = {
       sanskrit: "तस्य सञ्जनयन्हर्षं कुरुवृद्धः पितामहः | सिंहनादं विनद्योच्चैः शङ्खं दध्मौ प्रतापवान् ||",
       transliteration: "tasya sañjanayan harṣaṁ kuru-vṛddhaḥ pitāmahaḥ siṁha-nādaṁ vinadyoccaiḥ śaṅkhaṁ dadhmau pratāpavān",
       translation: "Then Bhisma, the great valiant grandsire of the Kuru dynasty, the grandfather of the fighters, blew his conchshell very loudly like the sound of a lion, giving Duryodhana joy.",
-      wordMeaning: "tasya = his; sañjanayan = increasing; harṣam = cheerfulness; kuru-vṛddhaḥ = the grandsire of the Kuru dynasty; pitāmahaḥ = the grandfather; siṁha-nādam = roaring sound, like that of a lion; vinadya = vibrating; uccaiḥ = very loudly; śaṅkham = conchshell; dadhmau = blew; pratāpavān = the valiant"
+      wordMeaning: "tasya = his; sañjanayan = increasing; harṣam = cheerfulness; kuru-vṛddhaḥ = the grandsire of the Kuru dynasty; pitāmahaḥ = the grandfather; siṁha-nādam = roaring sound, like that of a lion; vinadya = vibrating; uccaiḥ = very loudly; śaṅkham = conchshell; dadhmau = blew; pratāpavān = the valiant",
+      important: true
     },
     {
       number: "1.13",
@@ -104,14 +105,16 @@ export const chapter1_part1 = {
       sanskrit: "ततः श्वेतैर्हयैर्युक्ते महति स्यन्दने स्थितौ | माधवः पाण्डवश्चैव दिव्यौ शङ्खौ प्रदध्मतुः ||",
       transliteration: "tataḥ śvetair hayair yukte mahati syandane sthitau mādhavaḥ pāṇḍavaś caiva divyau śaṅkhau pradadhmatuḥ",
       translation: "On the other side, both Lord Krishna and Arjuna, stationed on a great chariot drawn by white horses, sounded their transcendental conchshells.",
-      wordMeaning: "tataḥ = thereafter; śvetaiḥ = by white; hayaiḥ = horses; yukte = being yoked with; mahati = in the great; syandane = chariot; sthitau = situated; mādhavaḥ = Krsna (the husband of the goddess of fortune); pāṇḍavaḥ = Arjuna (the son of Pandu); ca = and; eva = also; divyau = transcendental; śaṅkhau = conchshells; pradadhmatuḥ = sounded"
+      wordMeaning: "tataḥ = thereafter; śvetaiḥ = by white; hayaiḥ = horses; yukte = being yoked with; mahati = in the great; syandane = chariot; sthitau = situated; mādhavaḥ = Krsna (the husband of the goddess of fortune); pāṇḍavaḥ = Arjuna (the son of Pandu); ca = and; eva = also; divyau = transcendental; śaṅkhau = conchshells; pradadhmatuḥ = sounded",
+      important: true
     },
     {
       number: "1.15",
       sanskrit: "पाञ्चजन्यं हृषीकेशो देवदत्तं धनञ्जयः | पौण्ड्रं दध्मौ महाशङ्खं भीमकर्मा वृकोदरः ||",
       transliteration: "pāñcajanyaṁ hṛṣīkeśo devadattaṁ dhanañjayaḥ pauṇḍraṁ dadhmau mahā-śaṅkhaṁ bhīma-karmā vṛkodaraḥ",
       translation: "Then, Lord Krishna blew His conchshell, called Pancajanya; Arjuna blew his, the Devadatta; and Bhima, the voracious eater and performer of Herculean tasks, blew his terrific conchshell called Paundra.",
-      wordMeaning: "pāñcajanyam = the conchshell named Pancajanya; hṛṣīkeśaḥ = Hrsikesa (Krsna, the Lord who directs the senses of the devotees); devadattam = the conchshell named Devadatta; dhanañjayaḥ = Dhananjaya (Arjuna, the winner of wealth); pauṇḍram = the conchshell named Paundra; dadhmau = blew; mahā-śaṅkham = the terrific conchshell; bhīma-karmā = one who performs Herculean tasks; vṛka-udaraḥ = the voracious eater (Bhima)"
+      wordMeaning: "pāñcajanyam = the conchshell named Pancajanya; hṛṣīkeśaḥ = Hrsikesa (Krsna, the Lord who directs the senses of the devotees); devadattam = the conchshell named Devadatta; dhanañjayaḥ = Dhananjaya (Arjuna, the winner of wealth); pauṇḍram = the conchshell named Paundra; dadhmau = blew; mahā-śaṅkham = the terrific conchshell; bhīma-karmā = one who performs Herculean tasks; vṛka-udaraḥ = the voracious eater (Bhima)",
+      important: true
     }
   ]
 }; 

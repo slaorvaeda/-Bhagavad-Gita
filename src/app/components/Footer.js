@@ -1,11 +1,12 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   const footerLinks = [
     { href: '/chapters', label: 'Chapters', icon: 'BookOpen' },
-    { href: '/search', label: 'Search', icon: 'Search' },
+    { href: '/story', label: 'Story', icon: 'Book' },
     { href: '/important-verses', label: 'Important Verses', icon: 'Star' },
     { href: '/famous-verses', label: 'Famous Verses', icon: 'Award' },
     { href: '/bookmarks', label: 'Bookmarks', icon: 'Bookmark' }
@@ -37,6 +38,11 @@ export default function Footer() {
         <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
         </svg>
+      ),
+      Book: (
+        <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
       )
     };
     return icons[name] || null;
@@ -50,9 +56,13 @@ export default function Footer() {
           <div className="text-center sm:text-left">
             <div className="flex items-center justify-center sm:justify-start mb-4">
               <div className="w-8 h-8 mr-3">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
+                <Image
+                  src="/om-logo.svg"
+                  alt="Sacred Om Symbol"
+                  width={32}
+                  height={32}
+                  className="w-full h-full"
+                />
               </div>
               <h3 className="text-lg font-bold text-white">Bhagavad Gita</h3>
             </div>

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function Header() {
   const pathname = usePathname();
@@ -10,7 +11,7 @@ export default function Header() {
   
   const navItems = [
     { href: '/chapters', label: 'Chapters', icon: 'BookOpen' },
-    { href: '/search', label: 'Search', icon: 'Search' },
+    { href: '/story', label: 'Story', icon: 'Book' },
     { href: '/important-verses', label: 'Important Verses', icon: 'Star' },
     { href: '/famous-verses', label: 'Famous Verses', icon: 'Award' },
     { href: '/bookmarks', label: 'Bookmarks', icon: 'Bookmark' }
@@ -42,6 +43,11 @@ export default function Header() {
         <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
         </svg>
+      ),
+      Book: (
+        <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
       )
     };
     return icons[name] || null;
@@ -58,16 +64,13 @@ export default function Header() {
           {/* Professional Logo */}
           <Link href="/" className="flex items-center space-x-3 touch-target group">
             <div className="text-orange-600 group-hover:text-orange-700 transition-colors duration-300">
-              <svg viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10">
-                {/* Sacred Peacock Feather */}
-                <path d="M12 2L11 4L10 6L9 8L8 10L7 12L6 14L5 16L4 18L3 20L2 22L1 24L2 22L3 20L4 18L5 16L6 14L7 12L8 10L9 8L10 6L11 4L12 2Z"/>
-                <path d="M12 2L13 4L14 6L15 8L16 10L17 12L18 14L19 16L20 18L21 20L22 22L23 24L22 22L21 20L20 18L19 16L18 14L17 12L16 10L15 8L14 6L13 4L12 2Z"/>
-                <circle cx="12" cy="12" r="2" fill="currentColor"/>
-                <circle cx="12" cy="8" r="1" fill="currentColor"/>
-                <circle cx="12" cy="16" r="1" fill="currentColor"/>
-                <circle cx="8" cy="12" r="1" fill="currentColor"/>
-                <circle cx="16" cy="12" r="1" fill="currentColor"/>
-              </svg>
+              <Image
+                src="/om-logo.svg"
+                alt="Sacred Om Symbol"
+                width={56}
+                height={56}
+                className="w-14 h-14"
+              />
             </div>
             <div>
               <h1 className="text-xl sm:text-2xl font-bold font-devanagari">

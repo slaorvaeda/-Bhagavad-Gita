@@ -1,4 +1,25 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+
 export default function VerseDisplay({ chapter, selectedVerse, onVerseSelect }) {
+  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [bookmarks, setBookmarks] = useState([]);
+
+  useEffect(() => {
+    // Load bookmarks from localStorage
+    const savedBookmarks = localStorage.getItem('gita-bookmarks');
+    if (savedBookmarks) {
+      setBookmarks(JSON.parse(savedBookmarks));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Check if current verse is bookmarked
+    const currentVerseKey = `${chapter?.chapterId}.${selectedVerse}`;
+    setIsBookmarked(bookmarks.some(bookmark => bookmark.verseKey === currentVerseKey));
+  }, [selectedVerse, chapter, bookmarks]);
+
   if (!chapter) {
     return (
       <div className="bg-white rounded-lg shadow-lg p-8 text-center">
@@ -8,63 +29,129 @@ export default function VerseDisplay({ chapter, selectedVerse, onVerseSelect }) 
   }
 
   const currentVerse = chapter.verses.find(v => v.number === `${chapter.chapterId}.${selectedVerse}`);
+  const totalVerses = chapter.verses.length;
+
+  const handlePrevious = () => {
+    if (selectedVerse > 1) {
+      onVerseSelect(selectedVerse - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (selectedVerse < totalVerses) {
+      onVerseSelect(selectedVerse + 1);
+    }
+  };
+
+  const toggleBookmark = () => {
+    const currentVerseKey = `${chapter.chapterId}.${selectedVerse}`;
+    const verseInfo = {
+      verseKey: currentVerseKey,
+      chapterId: chapter.chapterId,
+      chapterName: chapter.name,
+      verseNumber: selectedVerse,
+      verseText: currentVerse?.translation?.substring(0, 100) + '...',
+      timestamp: new Date().toISOString()
+    };
+
+    let newBookmarks;
+    if (isBookmarked) {
+      // Remove bookmark
+      newBookmarks = bookmarks.filter(bookmark => bookmark.verseKey !== currentVerseKey);
+    } else {
+      // Add bookmark
+      newBookmarks = [...bookmarks, verseInfo];
+    }
+
+    setBookmarks(newBookmarks);
+    localStorage.setItem('gita-bookmarks', JSON.stringify(newBookmarks));
+    setIsBookmarked(!isBookmarked);
+  };
 
   return (
     <div className="space-y-6">
-      {/* Chapter Header */}
-      {/* <div className="bg-white rounded-lg shadow-lg p-6">
-        <div className="text-center mb-4">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">
-            Chapter {chapter.chapterId}: {chapter.name}
-          </h1>
-          <p className="text-xl text-gray-600 mb-2">{chapter.meaning}</p>
-          <p className="text-lg font-devanagari text-orange-600">{chapter.sanskrit}</p>
-        </div>
-        <p className="text-gray-700 leading-relaxed">{chapter.summary}</p>
-      </div> */}
+      {/* Top Navigation */}
+      <div className="flex items-center justify-between p-4 bg-gradient-to-r from-orange-50 to-orange-100 rounded-lg border border-orange-200">
+        <button
+          onClick={handlePrevious}
+          disabled={selectedVerse === 1}
+          className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${
+            selectedVerse === 1
+              ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+              : 'bg-white text-orange-600 hover:bg-orange-50 hover:shadow-md border border-orange-200'
+          }`}
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+          <span className="font-semibold text-sm">Previous</span>
+        </button>
 
-      {/* Verse Navigation */}
-      {/* <div className="bg-white rounded-lg shadow-lg p-4">
-        <h3 className="text-lg font-semibold text-gray-800 mb-3">Verses</h3>
-        <div className="grid grid-cols-6 md:grid-cols-10 gap-2">
-          {chapter.verses.map((verse) => {
-            const verseNumber = parseInt(verse.number.split('.')[1]);
-            return (
-              <button
-                key={verse.number}
-                onClick={() => onVerseSelect(verseNumber)}
-                className={`p-2 rounded-lg text-sm font-medium transition-all ${
-                  selectedVerse === verseNumber
-                    ? 'bg-orange-500 text-white shadow-md'
-                    : verse.important
-                    ? 'bg-orange-100 text-orange-700 hover:bg-orange-200'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-              >
-                {verseNumber}
-                {verse.important && (
-                  <svg className="w-3 h-3 mx-auto mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                  </svg>
-                )}
-              </button>
-            );
-          })}
+        <div className="text-center">
+          <div className="text-lg font-bold text-orange-700">
+            Verse {selectedVerse} of {totalVerses}
+          </div>
+          <div className="text-sm text-orange-600">
+            Chapter {chapter.chapterId} • {chapter.name}
+          </div>
         </div>
-      </div> */}
+
+        <button
+          onClick={handleNext}
+          disabled={selectedVerse === totalVerses}
+          className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${
+            selectedVerse === totalVerses
+              ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+              : 'bg-white text-orange-600 hover:bg-orange-50 hover:shadow-md border border-orange-200'
+          }`}
+        >
+          <span className="font-semibold text-sm">Next</span>
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
 
       {/* Current Verse */}
       {currentVerse && (
         <div className="bg-white rounded-lg shadow-lg p-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-2xl font-bold text-gray-800">
-              Verse {currentVerse.number}
-            </h2>
-            {currentVerse.important && (
-              <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                Important Verse
-              </span>
-            )}
+            <div className="flex items-center space-x-3">
+              <h2 className="text-2xl font-bold text-gray-800">
+                Verse {currentVerse.number}
+              </h2>
+              {currentVerse.important && (
+                <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                  Important Verse
+                </span>
+              )}
+            </div>
+            
+            {/* Bookmark Button */}
+            <button
+              onClick={toggleBookmark}
+              className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 ${
+                isBookmarked
+                  ? 'bg-orange-500 text-white hover:bg-orange-600'
+                  : 'bg-gray-100 text-gray-600 hover:bg-orange-50 hover:text-orange-600 border border-gray-200'
+              }`}
+            >
+              <svg 
+                className={`w-5 h-5 ${isBookmarked ? 'fill-current' : 'fill-none'}`} 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" 
+                />
+              </svg>
+              {/* <span className="font-semibold text-sm">
+                {isBookmarked ? 'Bookmarked' : 'Bookmark'}
+              </span> */}
+            </button>
           </div>
 
           {/* Sanskrit Text */}
@@ -100,6 +187,45 @@ export default function VerseDisplay({ chapter, selectedVerse, onVerseSelect }) 
           </div>
         </div>
       )}
+
+      {/* Bottom Navigation */}
+      {/* <div className="flex items-center justify-between p-4 bg-gradient-to-r from-orange-50 to-orange-100 rounded-lg border border-orange-200">
+        <button
+          onClick={handlePrevious}
+          disabled={selectedVerse === 1}
+          className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${
+            selectedVerse === 1
+              ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+              : 'bg-white text-orange-600 hover:bg-orange-50 hover:shadow-md border border-orange-200'
+          }`}
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+          <span className="font-semibold text-sm">Previous Verse</span>
+        </button>
+
+        <div className="text-center">
+          <div className="text-sm text-orange-600 font-medium">
+            Navigate through verses
+          </div>
+        </div>
+
+        <button
+          onClick={handleNext}
+          disabled={selectedVerse === totalVerses}
+          className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${
+            selectedVerse === totalVerses
+              ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+              : 'bg-white text-orange-600 hover:bg-orange-50 hover:shadow-md border border-orange-200'
+          }`}
+        >
+          <span className="font-semibold text-sm">Next Verse</span>
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div> */}
     </div>
   );
 } 

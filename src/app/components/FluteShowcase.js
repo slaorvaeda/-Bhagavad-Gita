@@ -23,16 +23,19 @@ function PerfectFlute() {
 
   useFrame((state) => {
     if (fluteGroupRef.current) {
+      // Only update every other frame for better performance
+      if (state.clock.elapsedTime % 0.032 > 0.016) return;
+      
       // Gentle floating animation
-      fluteGroupRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.6) * 0.05
+      fluteGroupRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.3) * 0.03 // Slower and smaller
 
       // Continuous slow rotation for 360-degree view
       if (!hovered) {
-        fluteGroupRef.current.rotation.y += 0.005
+        fluteGroupRef.current.rotation.y += 0.003 // Slower rotation
       }
 
       // Gentle breathing effect
-      const scale = 1 + Math.sin(state.clock.elapsedTime * 0.8) * 0.01
+      const scale = 1 + Math.sin(state.clock.elapsedTime * 0.4) * 0.005 // Slower and smaller
       fluteGroupRef.current.scale.setScalar(scale)
     }
   })
@@ -232,13 +235,13 @@ function PerfectFlute() {
 function SacredParticles() {
   const particlesRef = useRef()
   const [positions] = useState(() => {
-    const particleCount = 200
+    const particleCount = 100 // Reduced particle count
     const positions = new Float32Array(particleCount * 3)
 
     for (let i = 0; i < particleCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 15
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 10
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 15
+      positions[i * 3] = (Math.random() - 0.5) * 12 // Reduced range
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 8
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 12
     }
 
     return positions
@@ -246,8 +249,9 @@ function SacredParticles() {
 
   useFrame((state) => {
     if (particlesRef.current) {
-      particlesRef.current.rotation.y = state.clock.elapsedTime * 0.02
-      particlesRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.05) * 0.1
+      // Slower rotation for better performance
+      particlesRef.current.rotation.y = state.clock.elapsedTime * 0.01
+      particlesRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.025) * 0.05
     }
   })
 
@@ -273,13 +277,16 @@ function DivineLighting() {
   const spotLightRef = useRef()
 
   useFrame((state) => {
+    // Only update every other frame for better performance
+    if (state.clock.elapsedTime % 0.064 > 0.032) return;
+    
     if (lightRef.current) {
-      lightRef.current.position.x = Math.sin(state.clock.elapsedTime * 0.1) * 4
-      lightRef.current.position.z = Math.cos(state.clock.elapsedTime * 0.1) * 4
+      lightRef.current.position.x = Math.sin(state.clock.elapsedTime * 0.05) * 3 // Slower and smaller movement
+      lightRef.current.position.z = Math.cos(state.clock.elapsedTime * 0.05) * 3
     }
     if (spotLightRef.current) {
-      spotLightRef.current.position.x = Math.cos(state.clock.elapsedTime * 0.15) * 3
-      spotLightRef.current.position.z = Math.sin(state.clock.elapsedTime * 0.15) * 3
+      spotLightRef.current.position.x = Math.cos(state.clock.elapsedTime * 0.075) * 2
+      spotLightRef.current.position.z = Math.sin(state.clock.elapsedTime * 0.075) * 2
     }
   })
 
@@ -331,6 +338,20 @@ export default function FluteShowcase() {
     return () => clearTimeout(timer)
   }, [])
 
+  // Add passive event listeners for better performance
+  useEffect(() => {
+    const handleWheel = (e) => {
+      // This will be handled by OrbitControls
+    }
+    
+    // Add passive wheel listener to prevent scroll blocking
+    document.addEventListener('wheel', handleWheel, { passive: true })
+    
+    return () => {
+      document.removeEventListener('wheel', handleWheel)
+    }
+  }, [])
+
   return (
     <div className="relative w-full h-96 sm:h-[500px] lg:h-[600px] overflow-hidden rounded-2xl">
       <Canvas
@@ -340,7 +361,11 @@ export default function FluteShowcase() {
           antialias: true,
           alpha: true,
           powerPreference: "high-performance",
+          stencil: false,
+          depth: true,
         }}
+        performance={{ min: 0.5 }}
+        dpr={[1, 2]}
       >
         <Suspense fallback={<LoadingSpinner />}>
           {/* Lighting setup */}
@@ -372,6 +397,16 @@ export default function FluteShowcase() {
             dampingFactor={0.05}
             rotateSpeed={0.8}
             zoomSpeed={1.2}
+            enableKeys={false}
+            mouseButtons={{
+              LEFT: THREE.MOUSE.ROTATE,
+              MIDDLE: THREE.MOUSE.DOLLY,
+              RIGHT: THREE.MOUSE.PAN
+            }}
+            touches={{
+              ONE: THREE.TOUCH.ROTATE,
+              TWO: THREE.TOUCH.DOLLY_PAN
+            }}
           />
         </Suspense>
       </Canvas>

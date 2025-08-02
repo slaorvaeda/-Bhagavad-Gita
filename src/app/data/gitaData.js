@@ -223,29 +223,303 @@ export const famousVerses = [
   {
     id: "2.47",
     chapter: 2,
-    sanskrit: "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन",
-    translation: "You have a right to perform your prescribed duties, but you are not entitled to the fruits of your actions.",
+    sanskrit: "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन | मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि ||",
+    translation: "You have a right to perform your prescribed duties, but you are not entitled to the fruits of your actions. Never consider yourself to be the cause of the results of your activities, nor be attached to inaction.",
     meaning: "Focus on your actions, not the results"
+  },
+  {
+    id: "2.14",
+    chapter: 2,
+    sanskrit: "मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदुःखदाः | आगमापायिनोऽनित्यास्तांस्तितिक्षस्व भारत ||",
+    translation: "The nonpermanent appearance of happiness and distress, and their disappearance in due course, are like the appearance and disappearance of winter and summer seasons. They arise from sense perception, O scion of Bharata, and one must learn to tolerate them without being disturbed.",
+    meaning: "Learn to tolerate the dualities of life"
+  },
+  {
+    id: "2.20",
+    chapter: 2,
+    sanskrit: "न जायते म्रियते वा कदाचिन्नायं भूत्वा भविता वा न भूयः | अजो नित्यः शाश्वतोऽयं पुराणो न हन्यते हन्यमाने शरीरे ||",
+    translation: "For the soul there is neither birth nor death at any time. He has not come into being, does not come into being, and will not come into being. He is unborn, eternal, ever-existing and primeval. He is not slain when the body is slain.",
+    meaning: "The soul is eternal and indestructible"
+  },
+  {
+    id: "2.22",
+    chapter: 2,
+    sanskrit: "वासांसि जीर्णानि यथा विहाय नवानि गृह्णाति नरोऽपराणि | तथा शरीराणि विहाय जीर्णान्यन्यानि संयाति नवानि देही ||",
+    translation: "As a person puts on new garments, giving up old ones, the soul similarly accepts new material bodies, giving up the old and useless ones.",
+    meaning: "The soul changes bodies like clothes"
+  },
+  {
+    id: "2.48",
+    chapter: 2,
+    sanskrit: "योगः कर्मसु कौशलम् ||",
+    translation: "Yoga is skill in action.",
+    meaning: "Excellence in work is yoga"
+  },
+  {
+    id: "2.50",
+    chapter: 2,
+    sanskrit: "बुद्धियुक्तो जहातीह उभे सुकृतदुष्कृते | तस्माद्योगाय युज्यस्व योगः कर्मसु कौशलम् ||",
+    translation: "A man engaged in devotional service rids himself of both good and bad actions even in this life. Therefore strive for yoga, which is the art of all work.",
+    meaning: "Devotional service frees one from karma"
+  },
+  {
+    id: "3.19",
+    chapter: 3,
+    sanskrit: "तस्मादसक्तः सततं कार्यं कर्म समाचर | असक्तो ह्याचरन्कर्म परमाप्नोति पूरुषः ||",
+    translation: "Therefore, without being attached to the fruits of activities, one should act as a matter of duty, for by working without attachment one attains the Supreme.",
+    meaning: "Work without attachment leads to the Supreme"
+  },
+  {
+    id: "3.25",
+    chapter: 3,
+    sanskrit: "सक्ताः कर्मण्यविद्वांसो यथा कुर्वन्ति भारत | कुर्याद्विद्वांस्तथासक्तश्चिकीर्षुर्लोकसंग्रहम् ||",
+    translation: "As the ignorant perform their duties with attachment to results, so the wise should perform their duties without attachment, for the sake of leading people on the right path.",
+    meaning: "Wise people work for the welfare of others"
+  },
+  {
+    id: "3.35",
+    chapter: 3,
+    sanskrit: "श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात् | स्वधर्मे निधनं श्रेयः परधर्मो भयावहः ||",
+    translation: "It is better to engage in one's own occupation, even though one may perform it imperfectly, than to accept another's occupation and perform it perfectly. Duties prescribed according to one's nature are never affected by sinful reactions.",
+    meaning: "Better to do your own duty imperfectly than another's perfectly"
   },
   {
     id: "4.8",
     chapter: 4,
-    sanskrit: "परित्राणाय साधूनां विनाशाय च दुष्कृताम्",
-    translation: "To deliver the pious and to annihilate the miscreants, I Myself appear, millennium after millennium.",
+    sanskrit: "परित्राणाय साधूनां विनाशाय च दुष्कृताम् | धर्मसंस्थापनार्थाय सम्भवामि युगे युगे ||",
+    translation: "To deliver the pious and to annihilate the miscreants, as well as to reestablish the principles of religion, I Myself appear, millennium after millennium.",
     meaning: "God's purpose in descending to earth"
+  },
+  {
+    id: "4.10",
+    chapter: 4,
+    sanskrit: "वीतरागभयक्रोधा मन्मया मामुपाश्रिताः | बहवो ज्ञानतपसा पूता मद्भावमागताः ||",
+    translation: "Being freed from attachment, fear and anger, being fully absorbed in Me and taking refuge in Me, many, many persons in the past became purified by knowledge of Me—and thus they all attained transcendental love for Me.",
+    meaning: "Freedom from attachment leads to divine love"
+  },
+  {
+    id: "4.18",
+    chapter: 4,
+    sanskrit: "कर्मण्यकर्म यः पश्येदकर्मणि च कर्म यः | स बुद्धिमान्मनुष्येषु स युक्तः कृत्स्नकर्मकृत् ||",
+    translation: "One who sees inaction in action, and action in inaction, is intelligent among men, and he is in the transcendental position, although engaged in all sorts of activities.",
+    meaning: "The wise see action in inaction and inaction in action"
+  },
+  {
+    id: "5.10",
+    chapter: 5,
+    sanskrit: "ब्रह्मण्याधाय कर्माणि सङ्गं त्यक्त्वा करोति यः | लिप्यते न स पापेन पद्मपत्रमिवाम्भसा ||",
+    translation: "One who performs his duty without attachment, surrendering the results unto the Supreme God, is not affected by sinful action, as the lotus leaf is untouched by water.",
+    meaning: "Work without attachment keeps one pure"
+  },
+  {
+    id: "5.29",
+    chapter: 5,
+    sanskrit: "भोक्तारं यज्ञतपसां सर्वलोकमहेश्वरम् | सुहृदं सर्वभूतानां ज्ञात्वा मां शान्तिमृच्छति ||",
+    translation: "The sages, knowing Me as the ultimate purpose of all sacrifices and austerities, the Supreme Lord of all planets and demigods, and the benefactor and well-wisher of all living entities, attain peace from the pangs of material miseries.",
+    meaning: "Knowing God brings peace"
+  },
+  {
+    id: "6.5",
+    chapter: 6,
+    sanskrit: "आत्मौपम्येन सर्वत्र समं पश्यति योऽर्जुन | सुखं वा यदि वा दुःखं स योगी परमो मतः ||",
+    translation: "One must elevate oneself by one's own mind, not degrade oneself. The mind is the friend of the conditioned soul, and his enemy as well.",
+    meaning: "The mind can be both friend and enemy"
+  },
+  {
+    id: "6.6",
+    chapter: 6,
+    sanskrit: "बन्धुरात्मात्मनस्तस्य येनात्मैवात्मना जितः | अनात्मनस्तु शत्रुत्वे वर्तेतात्मैव शत्रुवत् ||",
+    translation: "For him who has conquered the mind, the mind is the best of friends; but for one who has failed to do so, his mind will remain the greatest enemy.",
+    meaning: "Conquered mind is a friend, uncontrolled mind is an enemy"
+  },
+  {
+    id: "6.32",
+    chapter: 6,
+    sanskrit: "आत्मौपम्येन सर्वत्र समं पश्यति योऽर्जुन | सुखं वा यदि वा दुःखं स योगी परमो मतः ||",
+    translation: "He is a perfect yogi who, by comparison to his own self, sees the true equality of all beings, both in their happiness and distress, O Arjuna!",
+    meaning: "Seeing equality in all beings is true yoga"
+  },
+  {
+    id: "7.3",
+    chapter: 7,
+    sanskrit: "मनुष्याणां सहस्रेषु कश्चिद्यतति सिद्धये | यततामपि सिद्धानां कश्चिन्मां वेत्ति तत्त्वतः ||",
+    translation: "Out of many thousands among men, one may endeavor for perfection, and of those who have achieved perfection, hardly one knows Me in truth.",
+    meaning: "Very few truly know God"
+  },
+  {
+    id: "7.7",
+    chapter: 7,
+    sanskrit: "मत्तः परतरं नान्यत्किञ्चिदस्ति धनञ्जय | मयि सर्वमिदं प्रोतं सूत्रे मणिगणा इव ||",
+    translation: "O conqueror of wealth, there is no truth superior to Me. Everything rests upon Me, as pearls are strung on a thread.",
+    meaning: "Everything is connected to and dependent on God"
+  },
+  {
+    id: "8.5",
+    chapter: 8,
+    sanskrit: "अन्तकाले च मामेव स्मरन्मुक्त्वा कलेवरम् | यः प्रयाति स मद्भावं याति नास्त्यत्र संशयः ||",
+    translation: "And whoever, at the end of life, quits his body, remembering Me alone, at once attains My nature. Of this there is no doubt.",
+    meaning: "Remembering God at death leads to liberation"
+  },
+  {
+    id: "8.6",
+    chapter: 8,
+    sanskrit: "यं यं वापि स्मरन्भावं त्यजत्यन्ते कलेवरम् | तं तमेवैति कौन्तेय सदा तद्भावभावितः ||",
+    translation: "Whatever state of being one remembers when he quits his body, that state he will attain without fail.",
+    meaning: "One attains the state one thinks of at death"
   },
   {
     id: "9.22",
     chapter: 9,
-    sanskrit: "अनन्याश्चिन्तयन्तो मां ये जनाः पर्युपासते",
-    translation: "Those who worship Me with exclusive devotion, I carry what they lack and preserve what they have.",
+    sanskrit: "अनन्याश्चिन्तयन्तो मां ये जनाः पर्युपासते | तेषां नित्याभियुक्तानां योगक्षेमं वहाम्यहम् ||",
+    translation: "But those who always worship Me with exclusive devotion, meditating on My transcendental form—to them I carry what they lack, and I preserve what they have.",
     meaning: "God's promise to devotees"
+  },
+  {
+    id: "9.26",
+    chapter: 9,
+    sanskrit: "पत्रं पुष्पं फलं तोयं यो मे भक्त्या प्रयच्छति | तदहं भक्त्युपहृतमश्नामि प्रयतात्मनः ||",
+    translation: "If one offers Me with love and devotion a leaf, a flower, fruit or water, I will accept it.",
+    meaning: "God accepts even simple offerings made with love"
+  },
+  {
+    id: "9.27",
+    chapter: 9,
+    sanskrit: "यत्करोषि यदश्नासि यज्जुहोषि ददासि यत् | यत्तपस्यसि कौन्तेय तत्कुरुष्व मदर्पणम् ||",
+    translation: "Whatever you do, whatever you eat, whatever you offer or give away, and whatever austerities you perform—do that, O son of Kunti, as an offering to Me.",
+    meaning: "Offer everything to God"
+  },
+  {
+    id: "10.8",
+    chapter: 10,
+    sanskrit: "अहं सर्वस्य प्रभवो मत्तः सर्वं प्रवर्तते | इति मत्वा भजन्ते मां बुधा भावसमन्विताः ||",
+    translation: "I am the source of all spiritual and material worlds. Everything emanates from Me. The wise who perfectly know this engage in My devotional service and worship Me with all their hearts.",
+    meaning: "Everything emanates from God"
+  },
+  {
+    id: "10.10",
+    chapter: 10,
+    sanskrit: "तेषां सततयुक्तानां भजतां प्रीतिपूर्वकम् | ददामि बुद्धियोगं तं येन मामुपयान्ति ते ||",
+    translation: "To those who are constantly devoted to serving Me with love, I give the understanding by which they can come to Me.",
+    meaning: "God gives understanding to His devotees"
+  },
+  {
+    id: "11.32",
+    chapter: 11,
+    sanskrit: "कालोऽस्मि लोकक्षयकृत्प्रवृद्धो लोकान्समाहर्तुमिह प्रवृत्तः | ऋतेऽपि त्वां न भविष्यन्ति सर्वे येऽवस्थिताः प्रत्यनीकेषु योधाः ||",
+    translation: "The Supreme Personality of Godhead said: Time I am, the great destroyer of the worlds, and I have come here to destroy all people. With the exception of you [the Pandavas], all the soldiers here on both sides will be slain.",
+    meaning: "Time is the ultimate destroyer"
+  },
+  {
+    id: "12.2",
+    chapter: 12,
+    sanskrit: "श्रीभगवानुवाच | मय्यावेश्य मनो ये मां नित्ययुक्ता उपासते | श्रद्धया परयोपेतास्ते मे युक्ततमा मताः ||",
+    transliteration: "śrī-bhagavān uvāca mayy āveśya mano ye māṁ nitya-yuktā upāsate śraddhayā parayopetās te me yuktatamā matāḥ",
+    translation: "The Supreme Personality of Godhead said: Those who fix their minds on My personal form and are always engaged in worshiping Me with great and transcendental faith are considered by Me to be most perfect.",
+    meaning: "Those who worship God's personal form are most perfect"
+  },
+  {
+    id: "12.13-14",
+    chapter: 12,
+    sanskrit: "अद्वेष्टा सर्वभूतानां मैत्रः करुण एव च | निर्ममो निरहंकारः समदुःखसुखः क्षमी || सन्तुष्टः सततं योगी यतात्मा दृढनिश्चयः | मय्यर्पितमनोबुद्धिर्यो मद्भक्तः स मे प्रियः ||",
+    translation: "One who is not envious but is a kind friend to all living entities, who does not think himself a proprietor and is free from false ego, who is equal in both happiness and distress, who is tolerant, always satisfied, self-controlled, and engaged in devotional service with determination, his mind and intelligence fixed on Me—such a devotee of Mine is very dear to Me.",
+    meaning: "Qualities of a dear devotee"
+  },
+  {
+    id: "13.8-12",
+    chapter: 13,
+    sanskrit: "अमानित्वमदम्भित्वमहिंसा क्षान्तिरार्जवम् | आचार्योपासनं शौचं स्थैर्यमात्मविनिग्रहः || इन्द्रियार्थेषु वैराग्यमनहंकार एव च | जन्ममृत्युजराव्याधिदुःखदोषानुदर्शनम् || असक्तिरनभिष्वङ्गः पुत्रदारगृहादिषु | नित्यं च समचित्तत्वमिष्टानिष्टोपपत्तिषु || मयि चानन्ययोगेन भक्तिरव्यभिचारिणी | विविक्तदेशसेवित्वमरतिर्जनसंसदि || अध्यात्मज्ञाननित्यत्वं तत्त्वज्ञानार्थदर्शनम् | एतज्ज्ञानमिति प्रोक्तमज्ञानं यदतोऽन्यथा ||",
+    translation: "Humility; pridelessness; nonviolence; tolerance; simplicity; approaching a bona fide spiritual master; cleanliness; steadiness; self-control; renunciation of the objects of sense gratification; absence of false ego; the perception of the evil of birth, death, old age and disease; nonattachment to children, wife, home and the rest; even-mindedness amid pleasant and unpleasant events; constant and unalloyed devotion to Me; resorting to solitary places; detachment from the general mass of people; accepting the importance of self-realization; and philosophical search for the Absolute Truth—all these I declare to be knowledge, and besides this whatever there may be is ignorance.",
+    meaning: "Qualities of true knowledge"
+  },
+  {
+    id: "14.5",
+    chapter: 14,
+    sanskrit: "सत्त्वं रजस्तम इति गुणाः प्रकृतिसम्भवाः | निबध्नन्ति महाबाहो देहे देहिनमव्ययम् ||",
+    translation: "The material nature consists of three modes—goodness, passion and ignorance. When the eternal living entity comes in contact with nature, O mighty-armed Arjuna, he becomes conditioned by these modes.",
+    meaning: "The three modes of material nature bind the soul"
+  },
+  {
+    id: "15.7",
+    chapter: 15,
+    sanskrit: "ममैवांशो जीवलोके जीवभूतः सनातनः | मनःषष्ठानीन्द्रियाणि प्रकृतिस्थानि कर्षति ||",
+    translation: "The living entities in this conditioned world are My eternal fragmental parts. Due to conditioned life, they are struggling very hard with the six senses, which include the mind.",
+    meaning: "All living beings are eternal parts of God"
+  },
+  {
+    id: "16.1-3",
+    chapter: 16,
+    sanskrit: "श्रीभगवानुवाच | अभयं सत्त्वसंशुद्धिर्ज्ञानयोगव्यवस्थितिः | दानं दमश्च यज्ञश्च स्वाध्यायस्तप आर्जवम् || अहिंसा सत्यमक्रोधस्त्यागः शान्तिरपैशुनम् | दया भूतेष्वलोलुप्त्वं मार्दवं ह्रीरचापलम् || तेजः क्षमा धृतिः शौचमद्रोहो नातिमानिता | भवन्ति सम्पदं दैवीमभिजातस्य भारत ||",
+    translation: "The Supreme Personality of Godhead said: Fearlessness; purification of one's existence; cultivation of spiritual knowledge; charity; self-control; performance of sacrifice; study of the Vedas; austerity; simplicity; nonviolence; truthfulness; freedom from anger; renunciation; tranquillity; aversion to faultfinding; compassion and freedom from covetousness; gentleness; modesty; steady determination; vigor; forgiveness; fortitude; cleanliness; and freedom from envy and from the passion for honor—these transcendental qualities, O son of Bharata, belong to godly men endowed with divine nature.",
+    meaning: "Divine qualities of character"
+  },
+  {
+    id: "16.4",
+    chapter: 16,
+    sanskrit: "दम्भो दर्पोऽभिमानश्च क्रोधः पारुष्यमेव च | अज्ञानं चाभिजातस्य पार्थ सम्पदमासुरीम् ||",
+    translation: "Pride, arrogance, conceit, anger, harshness and ignorance—these qualities belong to those of demonic nature, O son of Pritha.",
+    meaning: "Demonic qualities to avoid"
+  },
+  {
+    id: "17.3",
+    chapter: 17,
+    sanskrit: "सत्त्वानुरूपा सर्वस्य श्रद्धा भवति भारत | श्रद्धामयोऽयं पुरुषो यो यच्छ्रद्धः स एव सः ||",
+    translation: "O son of Bharata, according to one's existence under the various modes of nature, one develops a particular kind of faith. The living being is said to be of a particular faith according to the modes he has acquired.",
+    meaning: "Faith is according to one's nature"
+  },
+  {
+    id: "17.15",
+    chapter: 17,
+    sanskrit: "श्रीभगवानुवाच | अनुद्वेगकरं वाक्यं सत्यं प्रियहितं च यत् | स्वाध्यायाभ्यसनं चैव वाङ्मयं तप उच्यते ||",
+    translation: "The Supreme Personality of Godhead said: Austerity of speech consists in speaking words that are truthful, pleasing, beneficial, and not agitating to others, and also in regularly reciting Vedic literature.",
+    meaning: "Austerity of speech"
+  },
+  {
+    id: "18.5",
+    chapter: 18,
+    sanskrit: "यज्ञदानतपःकर्म न त्याज्यं कार्यमेव तत् | यज्ञो दानं तपश्चैव पावनानि मनीषिणाम् ||",
+    translation: "Acts of sacrifice, charity and penance are not to be given up; they must be performed. Indeed, sacrifice, charity and penance purify even the great souls.",
+    meaning: "Sacrifice, charity and penance purify the soul"
+  },
+  {
+    id: "18.11",
+    chapter: 18,
+    sanskrit: "न हि देहभृता शक्यं त्यक्तुं कर्माण्यशेषतः | यस्तु कर्मफलत्यागी स त्यागीत्यभिधीयते ||",
+    translation: "It is indeed impossible for an embodied being to give up all activities. But he who renounces the fruits of action is said to be in the renounced order.",
+    meaning: "True renunciation is of the fruits of action"
+  },
+  {
+    id: "18.25",
+    chapter: 18,
+    sanskrit: "अनुबन्धं क्षयं हिंसामनवेक्ष्य च पौरुषम् | मोहादारभ्यते कर्म यत्तत्तामसमुच्यते ||",
+    translation: "That action which is performed under illusion, in disregard of scriptural injunctions, and without concern for future bondage or for violence or for the ability of others is said to be in the mode of ignorance.",
+    meaning: "Actions in ignorance cause harm"
+  },
+  {
+    id: "18.37",
+    chapter: 18,
+    sanskrit: "यत्तदग्रे विषमिव परिणामेऽमृतोपमम् | तत्सुखं सात्त्विकं प्रोक्तमात्मबुद्धिप्रसादजम् ||",
+    translation: "That which in the beginning may be just like poison but at the end is just like nectar and which awakens one to self-realization is said to be happiness in the mode of goodness.",
+    meaning: "True happiness comes from self-realization"
+  },
+  {
+    id: "18.58",
+    chapter: 18,
+    sanskrit: "मच्चित्तः सर्वदुर्गाणि मत्प्रसादात्तरिष्यसि | अथ चेत्त्वमहंकारान्न श्रोष्यसि विनङ्क्ष्यसि ||",
+    translation: "If you become conscious of Me, you will pass over all the obstacles of conditioned life by My grace. If, however, you do not work in such consciousness but act through false ego, not hearing Me, you will be lost.",
+    meaning: "Being conscious of God helps overcome all obstacles"
   },
   {
     id: "18.66",
     chapter: 18,
-    sanskrit: "सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज",
-    translation: "Abandon all varieties of religion and just surrender unto Me.",
+    sanskrit: "सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज | अहं त्वा सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः ||",
+    translation: "Abandon all varieties of religion and just surrender unto Me. I shall deliver you from all sinful reactions. Do not fear.",
     meaning: "The ultimate instruction"
+  },
+  {
+    id: "18.78",
+    chapter: 18,
+    sanskrit: "यत्र योगेश्वरः कृष्णो यत्र पार्थो धनुर्धरः | तत्र श्रीर्विजयो भूतिध्रुवा नीतिर्मतिर्मम ||",
+    translation: "Wherever there is Krishna, the master of all mystics, and wherever there is Arjuna, the supreme archer, there will also certainly be opulence, victory, extraordinary power, and morality. That is my opinion.",
+    meaning: "Where Krishna and Arjuna are, there is victory"
   }
 ]; 

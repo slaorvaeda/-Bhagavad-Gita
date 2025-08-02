@@ -5,7 +5,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 
-function FloatingParticles({ count = 1000 }) {
+function FloatingParticles({ count = 300 }) {
   const mesh = useRef();
   const light = useRef();
 
@@ -14,10 +14,10 @@ function FloatingParticles({ count = 1000 }) {
     for (let i = 0; i < count; i++) {
       const time = Math.random() * 100;
       const factor = Math.random() * 20 + 10;
-      const speed = Math.random() * 0.01;
-      const x = Math.random() * 2000 - 1000;
-      const y = Math.random() * 2000 - 1000;
-      const z = Math.random() * 2000 - 1000;
+      const speed = Math.random() * 0.005; // Reduced speed
+      const x = Math.random() * 1500 - 750; // Reduced range
+      const y = Math.random() * 1500 - 750;
+      const z = Math.random() * 1500 - 750;
 
       temp.push({ time, factor, speed, x, y, z });
     }
@@ -51,21 +51,24 @@ function FloatingParticles({ count = 1000 }) {
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
     
+    // Only update every other frame for better performance
+    if (state.clock.elapsedTime % 0.032 > 0.016) return;
+    
     particles.forEach((particle, i) => {
       const { factor, speed, x, y, z } = particle;
       const t = (time + factor) * speed;
       
       const positions = mesh.current.geometry.attributes.position.array;
-      positions[i * 3] = x + Math.cos(t) * 50;
-      positions[i * 3 + 1] = y + Math.sin(t) * 50;
-      positions[i * 3 + 2] = z + Math.sin(t * 0.5) * 30;
+      positions[i * 3] = x + Math.cos(t) * 30; // Reduced movement
+      positions[i * 3 + 1] = y + Math.sin(t) * 30;
+      positions[i * 3 + 2] = z + Math.sin(t * 0.5) * 20;
     });
     
     mesh.current.geometry.attributes.position.needsUpdate = true;
     
-    // Rotate the entire particle system
-    mesh.current.rotation.y = time * 0.1;
-    mesh.current.rotation.x = time * 0.05;
+    // Slower rotation for better performance
+    mesh.current.rotation.y = time * 0.05;
+    mesh.current.rotation.x = time * 0.025;
   });
 
   return (
@@ -91,8 +94,9 @@ function SacredGeometry() {
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
     if (meshRef.current) {
-      meshRef.current.rotation.y = time * 0.2;
-      meshRef.current.rotation.x = time * 0.1;
+      // Slower rotation for better performance
+      meshRef.current.rotation.y = time * 0.1;
+      meshRef.current.rotation.x = time * 0.05;
     }
   });
 
@@ -108,7 +112,7 @@ export default function ThreeJSBackground() {
   return (
     <div className="fixed inset-0 -z-10">
       <Canvas camera={{ position: [0, 0, 1000], fov: 75 }}>
-        <FloatingParticles count={500} />
+        <FloatingParticles count={200} />
         <SacredGeometry />
       </Canvas>
     </div>

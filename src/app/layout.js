@@ -1,6 +1,19 @@
 import "./globals.css";
+import { Inter, Noto_Sans_Devanagari } from 'next/font/google';
 import Header from './components/Header';
 import Footer from './components/Footer';
+
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const notoSansDevanagari = Noto_Sans_Devanagari({ 
+  subsets: ['devanagari'],
+  variable: '--font-devanagari',
+  display: 'swap',
+});
 
 export const metadata = {
   title: "श्रीमद्भगवद्गीता | Srimad Bhagavad Gita",
@@ -58,14 +71,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
+    <html lang="en" className={`scroll-smooth ${inter.variable} ${notoSansDevanagari.variable}`} data-scroll-behavior="smooth">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#ea580c" />

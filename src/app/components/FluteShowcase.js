@@ -381,7 +381,7 @@ export default function FluteShowcase() {
         <h1 className="text-lg sm:text-3xl font-bold mb-1 sm:mb-2 text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-yellow-600">
           श्रीकृष्ण की बांसुरी
         </h1>
-        <h2 className="text-sm sm:text-xl font-semibold mb-1">Krishna's Divine Flute</h2>
+        <h2 className="text-sm sm:text-xl font-semibold mb-1">Krishna&apos;s Divine Flute</h2>
         <p className="text-xs sm:text-sm opacity-80">Perfect Alignment & 360° View</p>
         <div className="mt-2 sm:mt-3 text-xs opacity-70 space-y-1">
           <p>• Holes perfectly perpendicular to flute</p>

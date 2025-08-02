@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+
 
 export default function ChaptersPage() {
   const [chapters, setChapters] = useState([]);
@@ -87,9 +87,14 @@ export default function ChaptersPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-orange-600 mx-auto mb-4"></div>
-          <p className="text-xl text-gray-600">Loading sacred chapters...</p>
+        <div className="text-center py-12">
+          <div className="flex justify-center mb-4">
+            <svg className="w-16 h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">Loading Chapters...</h2>
+          <p className="text-gray-600">Please wait while we load the sacred chapters</p>
         </div>
       </div>
     );
@@ -100,11 +105,7 @@ export default function ChaptersPage() {
       {/* Page Header */}
       <section className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4 sm:mb-6">
               The Eighteen Chapters
             </h1>
@@ -125,11 +126,15 @@ export default function ChaptersPage() {
                 <div className="text-xs sm:text-sm text-gray-600">Wisdom</div>
               </div>
               <div className="bg-white rounded-xl p-4 shadow-lg border border-gray-100">
-                <div className="text-2xl sm:text-3xl font-bold text-orange-600 mb-1">🕉️</div>
+                <div className="flex justify-center">
+                  <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+                  </svg>
+                </div>
                 <div className="text-xs sm:text-sm text-gray-600">Sacred</div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -138,12 +143,8 @@ export default function ChaptersPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {chapters.map((chapter, index) => (
-              <motion.div
+              <div
                 key={chapter.chapterId}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
                 className="group"
               >
                 <Link href={`/chapters/${chapter.chapterId}`}>
@@ -152,7 +153,11 @@ export default function ChaptersPage() {
                     <div className={`bg-gradient-to-r ${chapterThemes[index]} p-4 sm:p-6 text-white`}>
                       <div className="flex items-center justify-between mb-3 sm:mb-4">
                         <div className="text-2xl sm:text-3xl font-bold">Chapter {chapter.chapterId}</div>
-                        <div className="text-xl sm:text-2xl">📖</div>
+                        <div className="flex justify-center">
+                          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                          </svg>
+                        </div>
                       </div>
                       <h3 className="text-lg sm:text-xl font-semibold mb-2">{chapter.name}</h3>
                       <p className="text-sm sm:text-base opacity-90">{chapter.meaning}</p>
@@ -190,7 +195,7 @@ export default function ChaptersPage() {
                     </div>
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -199,10 +204,7 @@ export default function ChaptersPage() {
       {/* Quick Actions */}
       <section className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+          <div
             className="bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl p-6 sm:p-8 md:p-12 text-white text-center"
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">
@@ -213,25 +215,21 @@ export default function ChaptersPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <Link href="/important-verses">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                <button
                   className="bg-white text-orange-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto touch-target"
                 >
                   Important Verses
-                </motion.button>
+                </button>
               </Link>
               <Link href="/search">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                <button
                   className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-white hover:text-orange-600 transition-all duration-300 w-full sm:w-auto touch-target"
                 >
                   Search Verses
-                </motion.button>
+                </button>
               </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

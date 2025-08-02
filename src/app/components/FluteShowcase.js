@@ -395,10 +395,10 @@ export default function FluteShowcase() {
       <div className="hidden sm:block absolute bottom-6 right-6 text-amber-800 bg-white/15 backdrop-blur-sm rounded-lg p-3 border border-amber-200/40">
         <div className="text-sm space-y-1">
           <p className="font-medium">360° View Controls:</p>
-          <p>🖱️ Drag to rotate freely</p>
-          <p>🔍 Scroll to zoom in/out</p>
-          <p>👆 Right-click + drag to pan</p>
-          <p>🎵 Holes perfectly aligned!</p>
+                          <p>Drag to rotate freely</p>
+                      <p>Scroll to zoom in/out</p>
+            <p>Right-click + drag to pan</p>
+                          <p>Holes perfectly aligned!</p>
         </div>
       </div>
 
@@ -407,21 +407,21 @@ export default function FluteShowcase() {
         <div className="text-sm">
           <p className="font-medium mb-2">Flute Notes (Left to Right):</p>
           <div className="space-y-1 text-xs">
-            <p>🎵 Embouchure (Blow hole)</p>
-            <p>🎼 Sa (Do) - Base note</p>
-            <p>🎼 Re (Re) - Second</p>
-            <p>🎼 Ga (Mi) - Third</p>
-            <p>🎼 Ma (Fa) - Fourth</p>
-            <p>🎼 Pa (Sol) - Fifth</p>
-            <p>🎼 Dha (La) - Sixth</p>
-            <p>🎼 Ni (Ti) - Seventh</p>
+                            <p>Embouchure (Blow hole)</p>
+                          <p>Sa (Do) - Base note</p>
+              <p>Re (Re) - Second</p>
+              <p>Ga (Mi) - Third</p>
+              <p>Ma (Fa) - Fourth</p>
+              <p>Pa (Sol) - Fifth</p>
+              <p>Dha (La) - Sixth</p>
+              <p>Ni (Ti) - Seventh</p>
           </div>
         </div>
       </div>
 
       {/* Sacred mantra - Mobile responsive */}
       <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 text-amber-800 bg-white/15 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-amber-200/40 max-w-xs sm:max-w-sm">
-        <p className="text-xs sm:text-sm font-medium italic">"वेणुगोपाल गोविन्द मुकुन्द शौरि नन्दन"</p>
+        <p className="text-xs sm:text-sm font-medium italic">&ldquo;वेणुगोपाल गोविन्द मुकुन्द शौरि नन्दन&rdquo;</p>
         <p className="text-xs opacity-70 mt-1">Venugopala Govinda Mukunda Shauri Nandana</p>
       </div>
 

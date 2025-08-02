@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import VerseDisplay from '../../components/VerseDisplay';
+
 
 export default function ChapterPage() {
   const params = useParams();
@@ -75,10 +76,15 @@ export default function ChapterPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50 flex items-center justify-center">
+      <div className="bg-gradient-to-br from-orange-50 to-yellow-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="text-6xl mb-4 animate-spin">📖</div>
-          <p className="text-xl text-gray-600">Loading sacred chapter...</p>
+          <div className="flex justify-center mb-4">
+            <svg className="w-16 h-16 text-orange-600 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">Loading Chapter...</h2>
+          <p className="text-gray-600">Please wait while we load the sacred verses</p>
         </div>
       </div>
     );
@@ -86,16 +92,23 @@ export default function ChapterPage() {
 
   if (!chapter) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50 flex items-center justify-center">
+      <div className="bg-gradient-to-br from-orange-50 to-yellow-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="text-6xl mb-4">❌</div>
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">Chapter Not Found</h1>
+          <div className="flex justify-center mb-4">
+            <svg className="w-16 h-16 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+            </svg>
+          </div>
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">Chapter Not Found</h2>
           <p className="text-gray-600 mb-6">The requested chapter could not be found.</p>
           <Link 
             href="/chapters"
-            className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+            className="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition-colors flex items-center space-x-2 mx-auto w-fit"
           >
-            📖 Back to Chapters
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+            <span>Back to Chapters</span>
           </Link>
         </div>
       </div>
@@ -103,35 +116,11 @@ export default function ChapterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50">
-      {/* Header */}
-      <header className="bg-gradient-to-r from-orange-600 to-red-600 text-white shadow-2xl">
-        <div className="container mx-auto px-6 py-4">
-          <nav className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-4">
-              <div className="text-3xl">🕉️</div>
-              <div>
-                <h1 className="text-2xl font-bold font-devanagari">श्रीमद्भगवद्गीता</h1>
-                <p className="text-sm opacity-90">Srimad Bhagavad Gita</p>
-              </div>
-            </Link>
-            <div className="hidden md:flex items-center space-x-8">
-              <Link href="/chapters" className="text-yellow-300 font-semibold">📖 Chapters</Link>
-              <Link href="/search" className="hover:text-yellow-300 transition-colors">🔍 Search</Link>
-              <Link href="/important-verses" className="hover:text-yellow-300 transition-colors">⭐ Important Verses</Link>
-              <Link href="/about" className="hover:text-yellow-300 transition-colors">ℹ️ About</Link>
-            </div>
-          </nav>
-        </div>
-      </header>
-
+    <div className="bg-gradient-to-br from-orange-50 to-yellow-50">
       {/* Chapter Header */}
       <section className="py-16">
         <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+          <div
             className="text-center mb-12"
           >
             <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-4xl mx-auto">
@@ -154,7 +143,7 @@ export default function ChapterPage() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -183,7 +172,9 @@ export default function ChapterPage() {
                       >
                         {verseNumber}
                         {verse.important && (
-                          <span className="block text-xs">⭐</span>
+                          <svg className="w-3 h-3 mx-auto mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                          </svg>
                         )}
                       </button>
                     );
@@ -200,10 +191,18 @@ export default function ChapterPage() {
                       ← Previous Chapter
                     </Link>
                   )}
+                  
+                  <Link 
+                    href="/chapters"
+                    className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-center block"
+                  >
+                    All Chapters
+                  </Link>
+                  
                   {chapterId < 18 && (
                     <Link 
                       href={`/chapters/${chapterId + 1}`}
-                      className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-center block"
+                      className="w-full bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-center block"
                     >
                       Next Chapter →
                     </Link>
@@ -212,110 +211,29 @@ export default function ChapterPage() {
               </div>
             </div>
 
-            {/* Main Content - Current Verse */}
+            {/* Main Content Area */}
             <div className="lg:col-span-3">
-              {currentVerse ? (
-                <motion.div
-                  key={currentVerse.number}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="bg-white rounded-2xl shadow-xl overflow-hidden"
-                >
-                  {/* Verse Header */}
-                  <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-6">
-                    <div className="flex items-center justify-between">
-                      <h2 className="text-3xl font-bold">
-                        Verse {currentVerse.number}
-                      </h2>
-                      {currentVerse.important && (
-                        <div className="text-right">
-                          <div className="text-3xl mb-1">⭐</div>
-                          <p className="text-sm text-orange-100">Important Verse</p>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Verse Content */}
-                  <div className="p-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                      {/* Sanskrit */}
-                      <div className="space-y-4">
-                        <h3 className="text-xl font-semibold text-gray-700 flex items-center">
-                          <span className="text-orange-500 mr-2">📜</span>
-                          Sanskrit Text
-                        </h3>
-                        <div className="bg-orange-50 rounded-lg p-4">
-                          <p className="text-xl font-devanagari text-gray-800 leading-relaxed">
-                            {currentVerse.sanskrit}
-                          </p>
-                        </div>
-                        <div className="bg-yellow-50 rounded-lg p-4">
-                          <h4 className="font-semibold text-gray-700 mb-2">Transliteration:</h4>
-                          <p className="text-lg text-gray-700 leading-relaxed">
-                            {currentVerse.transliteration}
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Translation */}
-                      <div className="space-y-4">
-                        <h3 className="text-xl font-semibold text-gray-700 flex items-center">
-                          <span className="text-orange-500 mr-2">🌍</span>
-                          Translation
-                        </h3>
-                        <div className="bg-green-50 rounded-lg p-4">
-                          <p className="text-xl text-gray-800 leading-relaxed">
-                            {currentVerse.translation}
-                          </p>
-                        </div>
-                        <div className="bg-blue-50 rounded-lg p-4">
-                          <h4 className="font-semibold text-gray-700 mb-2">Word Meanings:</h4>
-                          <p className="text-sm text-gray-700 leading-relaxed">
-                            {currentVerse.wordMeaning}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
+              {selectedVerse ? (
+                <VerseDisplay 
+                  chapter={chapter} 
+                  selectedVerse={selectedVerse} 
+                  onVerseSelect={handleVerseSelect}
+                />
               ) : (
-                <div className="bg-white rounded-2xl shadow-xl p-8 text-center">
-                  <p className="text-gray-600">Please select a verse to view its content.</p>
+                <div className="bg-white rounded-xl shadow-lg p-8 text-center">
+                  <div className="flex justify-center mb-4">
+                    <svg className="w-16 h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                  </div>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-4">Select a Verse</h2>
+                  <p className="text-gray-600">Choose a verse from the sidebar to begin reading</p>
                 </div>
               )}
             </div>
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white py-12 mt-20">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-center md:text-left mb-6 md:mb-0">
-              <p className="text-lg opacity-75 font-devanagari">
-                ॐ तत् सत् | Om Tat Sat
-              </p>
-              <p className="text-sm opacity-50 mt-2">
-                This is a sacred text. Please read with respect and reverence.
-              </p>
-            </div>
-            <div className="flex space-x-6">
-              <Link href="/" className="text-orange-300 hover:text-orange-100 transition-colors">
-                🏠 Home
-              </Link>
-              <Link href="/chapters" className="text-orange-300 hover:text-orange-100 transition-colors">
-                📖 All Chapters
-              </Link>
-              <Link href="/search" className="text-orange-300 hover:text-orange-100 transition-colors">
-                🔍 Search
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 } 

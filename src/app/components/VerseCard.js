@@ -1,17 +1,11 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 export default function VerseCard({ verse, chapterId, isImportant = false }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 ${
-        isImportant ? 'border-orange-500' : 'border-gray-200'
-      }`}
+    <div
+      className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300"
     >
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center space-x-3">
@@ -53,6 +47,6 @@ export default function VerseCard({ verse, chapterId, isImportant = false }) {
           </p>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 } 

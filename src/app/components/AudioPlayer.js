@@ -78,7 +78,11 @@ export default function AudioPlayer({ verseNumber, sanskritText }) {
         </div>
         
         <div className="text-right">
-          <div className="text-2xl mb-1">🎵</div>
+                      <div className="flex justify-center mb-1">
+              <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+              </svg>
+            </div>
           <div className="text-xs text-gray-600">
             Sacred Recitation
           </div>
@@ -103,7 +107,7 @@ export default function AudioPlayer({ verseNumber, sanskritText }) {
       )}
       
       <div className="mt-4 text-sm text-gray-600 bg-white p-3 rounded-lg border border-orange-200">
-        <p className="font-semibold text-orange-700 mb-2">🎯 Audio Features:</p>
+                    <p className="font-semibold text-orange-700 mb-2">Audio Features:</p>
         <ul className="list-disc list-inside space-y-1 text-xs">
           <li>Professional Sanskrit recitation by scholars</li>
           <li>Traditional Vedic chanting style</li>

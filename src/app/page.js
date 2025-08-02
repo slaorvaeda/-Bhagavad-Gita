@@ -2,18 +2,22 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import MahabharataAnimation from './components/MahabharataAnimation';
 import FluteShowcase from './components/FluteShowcase';
 
 export default function Home() {
-  const [currentTime, setCurrentTime] = useState(new Date());
+  const [currentTime, setCurrentTime] = useState(null);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+    setCurrentTime(new Date());
+    
     const timer = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
+    
     return () => clearInterval(timer);
   }, []);
 
@@ -35,87 +39,85 @@ export default function Home() {
     }
   ];
 
-  const [currentQuote, setCurrentQuote] = useState(0);
+  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
 
   useEffect(() => {
-    const quoteTimer = setInterval(() => {
-      setCurrentQuote((prev) => (prev + 1) % sacredQuotes.length);
+    const interval = setInterval(() => {
+      setCurrentQuoteIndex((prevIndex) => (prevIndex + 1) % sacredQuotes.length);
     }, 5000);
-    return () => clearInterval(quoteTimer);
-  }, []);
+
+    return () => clearInterval(interval);
+  }, [sacredQuotes.length]);
 
   return (
-    <div className="min-h-screen bg-[rgb(253,244,212)]">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50">
       {/* Hero Section */}
-      <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <section className="relative overflow-hidden py-16 sm:py-20 lg:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Text Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center lg:text-left order-2 lg:order-1"
+            <div
+              className="text-center lg:text-left"
             >
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-800 mb-4 sm:mb-6">
-                <span className="text-orange-600 font-devanagari">श्रीमद्भगवद्गीता</span>
+              <h1
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight"
+              >
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-red-600">श्रीमद्भगवद्गीता</span>
+                <br />
+                <span className="text-amber-800">Srimad Bhagavad Gita</span>
               </h1>
-              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-gray-700 mb-4 sm:mb-6">
-                The Song of the Divine Lord
-              </h2>
-              <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
-                Discover the timeless wisdom of Lord Krishna's teachings to Arjuna on the battlefield of Kurukshetra. 
-                A sacred scripture that guides humanity through the path of dharma, karma, and moksha.
+              <p
+                className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed"
+              >
+                Discover the timeless wisdom of Lord Krishna&apos;s teachings through the sacred verses of the Bhagavad Gita.
               </p>
-              
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
-                <Link href="/chapters" className="w-full sm:w-auto">
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2 w-full sm:w-auto touch-target"
-                  >
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                    </svg>
-                    <span>Read Sacred Verses</span>
-                  </motion.button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Link
+                  href="/chapters"
+                  className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:from-amber-700 hover:to-orange-700 transition-all duration-300 shadow-lg transform hover:scale-105"
+                >
+                  Start Reading
                 </Link>
-                <Link href="/important-verses" className="w-full sm:w-auto">
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="bg-white text-orange-600 border-2 border-orange-500 px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2 w-full sm:w-auto touch-target"
-                  >
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                    </svg>
-                    <span>Important Teachings</span>
-                  </motion.button>
+                <Link
+                  href="/search"
+                  className="bg-white text-amber-600 px-8 py-4 rounded-xl text-lg font-semibold border-2 border-amber-600 hover:bg-amber-50 transition-all duration-300 shadow-lg transform hover:scale-105"
+                >
+                  Search Verses
                 </Link>
               </div>
-            </motion.div>
+            </div>
 
             {/* Hero Image */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex justify-center lg:justify-end order-1 lg:order-2"
+            <div
+              className="flex justify-center lg:justify-end"
             >
-              <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-2xl xl:max-w-2xl">
-                <Image
-                  src="/hero.png"
-                  alt="Bhagavad Gita Hero Image"
-                  width={800}
-                  height={800}
-                  className="object-contain rounded-2xl"
-                  priority
-                  
-                />
-              </div>
-            </motion.div>
+              <Image
+                src="/hero.png"
+                alt="Divine Krishna with Flute"
+                width={800}
+                height={800}
+                className="rounded-2xl shadow-2xl max-w-full h-auto"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sacred Quote Carousel */}
+      <section className="py-12 sm:py-16 bg-gradient-to-r from-amber-100 to-orange-100">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            key={currentQuoteIndex}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <blockquote className="text-2xl sm:text-3xl lg:text-4xl font-medium text-gray-800 italic mb-6 leading-relaxed">
+              &ldquo;{sacredQuotes[currentQuoteIndex].text}&rdquo;
+            </blockquote>
+            <cite className="text-lg text-amber-700 font-semibold">
+              — {sacredQuotes[currentQuoteIndex].source}
+            </cite>
           </div>
         </div>
       </section>
@@ -152,235 +154,236 @@ export default function Home() {
       {/* Flute Showcase Section */}
       <section className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+          <div
             className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4 sm:mb-6">
+            <h2
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4 sm:mb-6"
+            >
               Divine Melody
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+            <p
+              className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto"
+            >
               Witness the sacred flute of Lord Krishna, whose divine music 
               enchants all beings and awakens the soul to spiritual consciousness.
             </p>
-          </motion.div>
+          </div>
           
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
+          <div
             className="w-full"
           >
             <FluteShowcase />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Sacred Quote Section */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            key={currentQuote}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="bg-white rounded-2xl p-6 sm:p-8 md:p-12 shadow-xl border border-orange-100"
-          >
-            <div className="text-center">
-              <div className="text-3xl sm:text-4xl mb-4 sm:mb-6">🕉️</div>
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-devanagari text-orange-600 mb-4 sm:mb-6 leading-relaxed">
-                "{sacredQuotes[currentQuote].text}"
-              </p>
-              <p className="text-base sm:text-lg md:text-xl text-gray-700 mb-3 sm:mb-4">
-                {sacredQuotes[currentQuote].meaning}
-              </p>
-              <p className="text-sm sm:text-base text-orange-500 font-semibold">
-                Bhagavad Gita {sacredQuotes[currentQuote].chapter}
-              </p>
-            </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-12 sm:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12 sm:mb-16"
+      <section className="py-12 sm:py-16 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto">
+          <div
+            className="text-center mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-3 sm:mb-4">
+            <h2
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-6"
+            >
               Sacred Features
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-              Explore the complete Bhagavad Gita with modern tools and traditional reverence
+            <p
+              className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto"
+            >
+              Discover the divine wisdom through our comprehensive features
             </p>
-          </motion.div>
+          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                icon: "📖",
-                title: "Complete Scripture",
-                description: "All 700 verses across 18 chapters with Sanskrit text, transliteration, translation, and word meanings.",
-                color: "from-blue-500 to-purple-500"
+                title: "Complete Chapters",
+                description: "All 18 chapters with Sanskrit text, transliteration, and translations",
+                icon: (
+                  <svg className="w-12 h-12 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                )
               },
               {
-                icon: "🔍",
                 title: "Advanced Search",
-                description: "Search through verses, translations, and Sanskrit text to find specific teachings and wisdom.",
-                color: "from-green-500 to-teal-500"
+                description: "Search through verses, words, and meanings with powerful filters",
+                icon: (
+                  <svg className="w-12 h-12 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                )
               },
               {
-                icon: "⭐",
                 title: "Important Verses",
-                description: "Curated collection of the most significant verses that contain the essence of spiritual wisdom.",
-                color: "from-orange-500 to-red-500"
+                description: "Curated collection of the most significant teachings and verses",
+                icon: (
+                  <svg className="w-12 h-12 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                  </svg>
+                )
               },
               {
-                icon: "💾",
+                title: "Study Notes",
+                description: "Add personal notes and insights to your favorite verses",
+                icon: (
+                  <svg className="w-12 h-12 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                  </svg>
+                )
+              },
+              {
                 title: "Bookmarks",
-                description: "Save your favorite verses and create personal collections for daily study and reflection.",
-                color: "from-purple-500 to-pink-500"
+                description: "Save and organize your favorite verses for easy access",
+                icon: (
+                  <svg className="w-12 h-12 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                  </svg>
+                )
               },
               {
-                icon: "📱",
-                title: "Mobile Friendly",
-                description: "Read and study the Gita anywhere, anytime with our responsive design optimized for all devices.",
-                color: "from-indigo-500 to-blue-500"
-              },
-              {
-                icon: "🎵",
-                title: "Audio Support",
-                description: "Listen to Sanskrit recitations and pronunciations to enhance your learning experience.",
-                color: "from-yellow-500 to-orange-500"
+                title: "Mobile Responsive",
+                description: "Perfect reading experience on all devices and screen sizes",
+                icon: (
+                  <svg className="w-12 h-12 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                )
               }
             ].map((feature, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
+                className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
               >
-                <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r ${feature.color} rounded-xl flex items-center justify-center text-2xl sm:text-3xl mb-4`}>
+                <div className="flex justify-center mb-4">
                   {feature.icon}
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3">{feature.title}</h3>
-                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{feature.description}</p>
-              </motion.div>
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3 text-center">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 text-center leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6">
+      <section className="py-12 sm:py-16 px-4 sm:px-6 bg-gradient-to-r from-orange-100 to-red-100">
         <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+          <div
             className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8"
           >
             {[
-              { number: "18", label: "Chapters", icon: "📖" },
-              { number: "700", label: "Verses", icon: "📜" },
-              { number: "5000+", label: "Years Old", icon: "⏰" },
-              { number: "∞", label: "Wisdom", icon: "🕉️" }
+              { number: "18", label: "Chapters", icon: (
+                <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              ) },
+              { number: "700", label: "Verses", icon: (
+                <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              ) },
+              { number: "5000+", label: "Years Old", icon: (
+                <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              ) },
+              { number: "∞", label: "Wisdom", icon: (
+                <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              ) }
             ].map((stat, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100"
               >
-                <div className="text-2xl sm:text-3xl mb-2">{stat.icon}</div>
+                <div className="flex justify-center mb-2">{stat.icon}</div>
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-orange-600 mb-1">{stat.number}</div>
                 <div className="text-sm sm:text-base text-gray-600">{stat.label}</div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Quick Actions */}
       <section className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+          <div
             className="bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl p-6 sm:p-8 md:p-12 text-white text-center"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">
+            <h2
+              className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6"
+            >
               Begin Your Journey
             </h2>
-            <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 opacity-90">
+            <p
+              className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 opacity-90"
+            >
               Start exploring the divine wisdom of the Bhagavad Gita today
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <Link href="/chapters">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-white text-orange-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto touch-target"
+                <button
+                  className="bg-white text-orange-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto touch-target flex items-center justify-center space-x-2"
                 >
-                  Start Reading
-                </motion.button>
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                  <span>Start Reading</span>
+                </button>
               </Link>
               <Link href="/search">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-white hover:text-orange-600 transition-all duration-300 w-full sm:w-auto touch-target"
+                <button
+                  className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-white hover:text-orange-600 transition-all duration-300 w-full sm:w-auto touch-target flex items-center justify-center space-x-2"
                 >
-                  Search Verses
-                </motion.button>
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                  <span>Search Verses</span>
+                </button>
               </Link>
               <Link href="/krishna-flute">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-white hover:text-orange-600 transition-all duration-300 w-full sm:w-auto touch-target flex items-center space-x-2"
+                <button
+                  className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-white hover:text-orange-600 transition-all duration-300 w-full sm:w-auto touch-target flex items-center justify-center space-x-2"
                 >
-                  <span>🎵</span>
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+                  </svg>
                   <span>Divine Flute</span>
-                </motion.button>
+                </button>
               </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Current Time */}
       <section className="py-8 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
+          <div
             className="bg-white rounded-xl p-4 sm:p-6 shadow-lg border border-gray-100"
           >
             <p className="text-sm sm:text-base text-gray-600 mb-2">Current Time</p>
             <p className="text-lg sm:text-xl md:text-2xl font-bold text-orange-600 font-mono">
-              {currentTime.toLocaleTimeString()}
+              {isClient ? currentTime.toLocaleTimeString() : 'Loading...'}
             </p>
             <p className="text-xs sm:text-sm text-gray-500 mt-1">
-              {currentTime.toLocaleDateString('en-US', { 
+              {isClient ? currentTime.toLocaleDateString('en-US', { 
                 weekday: 'long', 
                 year: 'numeric', 
                 month: 'long', 
                 day: 'numeric' 
-              })}
+              }) : 'Loading...'}
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

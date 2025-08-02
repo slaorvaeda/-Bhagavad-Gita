@@ -24,7 +24,7 @@ export default async function ChapterPage({ params }) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-yellow-50 to-red-50">
+    <div className="bg-gradient-to-br from-orange-50 via-yellow-50 to-red-50">
       {/* Sacred Om Symbol Background */}
       <div className="absolute inset-0 opacity-5">
         <div className="flex items-center justify-center h-full">
@@ -32,8 +32,8 @@ export default async function ChapterPage({ params }) {
         </div>
       </div>
 
-      {/* Header */}
-      <header className="relative z-10 bg-gradient-to-r from-orange-600 to-red-600 text-white shadow-lg">
+      {/* Page Header Section */}
+      <section className="relative z-10 bg-gradient-to-r from-orange-600 to-red-600 text-white shadow-lg">
         <div className="container mx-auto px-6 py-8">
           <div className="text-center">
             <Link href="/" className="text-yellow-300 hover:text-yellow-100 transition-colors mb-4 inline-block">
@@ -46,10 +46,10 @@ export default async function ChapterPage({ params }) {
             <p className="text-lg opacity-90">{chapter.meaning}</p>
           </div>
         </div>
-      </header>
+      </section>
 
       {/* Main Content */}
-      <main className="relative z-10 container mx-auto px-6 py-12">
+      <section className="relative z-10 container mx-auto px-6 py-12">
         <div className="max-w-4xl mx-auto">
           {/* Chapter Introduction */}
           <div className="bg-white rounded-lg shadow-md p-8 mb-8 border-l-4 border-orange-500">
@@ -128,19 +128,7 @@ export default async function ChapterPage({ params }) {
             )}
           </div>
         </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="relative z-10 bg-gray-800 text-white py-8 mt-20">
-        <div className="container mx-auto px-6 text-center">
-          <p className="text-sm opacity-75">
-            ॐ तत् सत् | Om Tat Sat
-          </p>
-          <p className="text-xs opacity-50 mt-2">
-            This is a sacred text. Please read with respect and reverence.
-          </p>
-        </div>
-      </footer>
+      </section>
     </div>
   );
 } 

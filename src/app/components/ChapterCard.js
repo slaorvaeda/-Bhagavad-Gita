@@ -1,17 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { DevotionalIcons } from './DevotionalIcons';
 
 export default function ChapterCard({ chapter, index, theme }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ y: -10, scale: 1.02 }}
-      className="group"
+    <div
+      className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105"
     >
       <Link href={`/chapters/${chapter.chapterId}`}>
         <div className={`bg-gradient-to-br ${theme} rounded-2xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 h-full`}>
@@ -37,6 +32,6 @@ export default function ChapterCard({ chapter, index, theme }) {
           </div>
         </div>
       </Link>
-    </motion.div>
+    </div>
   );
 } 

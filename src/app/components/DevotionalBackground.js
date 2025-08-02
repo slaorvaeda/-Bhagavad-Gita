@@ -1,72 +1,56 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 import { DevotionalIcons } from './DevotionalIcons';
 
 export default function DevotionalBackground() {
-  const sacredSymbols = [
-    { icon: 'Om', color: 'text-orange-300' },
-    { icon: 'Lotus', color: 'text-yellow-300' },
-    { icon: 'Flame', color: 'text-red-300' },
-    { icon: 'Chakra', color: 'text-blue-300' },
-    { icon: 'Sun', color: 'text-orange-400' },
-    { icon: 'Moon', color: 'text-indigo-300' },
-    { icon: 'Bell', color: 'text-yellow-400' },
-    { icon: 'Tree', color: 'text-green-300' }
-  ];
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    // Create floating symbols
+    const symbols = [];
+    const symbolTypes = ['om', 'lotus', 'peacock', 'flute', 'krishna'];
+
+    for (let i = 0; i < 15; i++) {
+      const symbol = document.createElement('div');
+      symbol.className = 'absolute text-4xl opacity-10 pointer-events-none';
+      symbol.style.left = `${Math.random() * 100}%`;
+      symbol.style.top = `${Math.random() * 100}%`;
+      symbol.style.animationDelay = `${Math.random() * 5}s`;
+      symbol.style.animationDuration = `${5 + Math.random() * 5}s`;
+      
+      const symbolType = symbolTypes[Math.floor(Math.random() * symbolTypes.length)];
+      symbol.innerHTML = DevotionalIcons[symbolType] || '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>';
+      
+      container.appendChild(symbol);
+      symbols.push(symbol);
+    }
+
+    return () => {
+      symbols.forEach(symbol => {
+        if (symbol.parentNode) {
+          symbol.parentNode.removeChild(symbol);
+        }
+      });
+    };
+  }, []);
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Sacred Om Background Animation */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-100/20 to-red-100/20"></div>
-        <motion.div
-          className="absolute inset-0"
-          animate={{
-            background: [
-              "radial-gradient(circle at 20% 80%, rgba(249, 115, 22, 0.1) 0%, transparent 50%)",
-              "radial-gradient(circle at 80% 20%, rgba(220, 38, 38, 0.1) 0%, transparent 50%)",
-              "radial-gradient(circle at 40% 40%, rgba(251, 191, 36, 0.1) 0%, transparent 50%)",
-              "radial-gradient(circle at 20% 80%, rgba(249, 115, 22, 0.1) 0%, transparent 50%)"
-            ]
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        
-        {/* Floating Sacred Symbols */}
-        {[...Array(12)].map((_, i) => {
-          const symbol = sacredSymbols[i % sacredSymbols.length];
-          const IconComponent = DevotionalIcons[symbol.icon];
-          
-          return (
-            <motion.div
-              key={i}
-              className="absolute"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [0, -30, 0],
-                x: [0, Math.random() * 20 - 10, 0],
-                rotate: [0, 360],
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: 6 + Math.random() * 4,
-                repeat: Infinity,
-                delay: Math.random() * 3,
-              }}
-            >
-              <IconComponent className={`w-8 h-8 ${symbol.color} opacity-20`} />
-            </motion.div>
-          );
-        })}
-      </div>
+    <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 bg-gradient-to-br from-orange-100/20 to-red-100/20"></div>
+      <div
+        className="absolute inset-0"
+        style={{
+          background: [
+            "radial-gradient(circle at 20% 80%, rgba(249, 115, 22, 0.1) 0%, transparent 50%)",
+            "radial-gradient(circle at 80% 20%, rgba(239, 68, 68, 0.1) 0%, transparent 50%)",
+            "radial-gradient(circle at 40% 40%, rgba(245, 158, 11, 0.1) 0%, transparent 50%)"
+          ].join(', ')
+        }}
+      />
     </div>
   );
 } 
